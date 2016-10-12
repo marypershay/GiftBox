@@ -1,21 +1,19 @@
-var gifts = [];
-
 function GiftBox(){
+	var gifts = [];
 	this.addGift = function (candy){
 		return gifts.push(candy);
 	}
-}
-
-var sum = 0;
-GiftBox.prototype.totalWeight = function(){
+	
+	this.showGiftBox = function(){
+		return console.log(gifts);
+	}
+	var sum = 0;
+	this.totalWeight = function(){
 		for(var i=0; i < gifts.length; i++){
 			sum+=gifts[i].getWeight();
 		}
 		 return sum;
 	}
-GiftBox.prototype.showGiftBox = function(){
-		return console.log(gifts);
-	}
-
+}
 
 exports.GiftBox = GiftBox;
