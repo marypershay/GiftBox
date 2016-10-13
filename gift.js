@@ -14,6 +14,14 @@ function GiftBox(){
 		}
 		 return sum;
 	}
+
+	this.sortByCost= function(){
+		return console.log(gifts.sort(compareCost));
+	}
+}
+
+function compareCost(candy1, candy2) {
+  return candy1.cost - candy2.cost;
 }
 
 exports.GiftBox = GiftBox;

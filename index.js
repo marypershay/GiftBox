@@ -9,28 +9,41 @@ var giftbox_constr = require('./gift');
  
 var giftBox = new giftbox_constr.GiftBox();
 
- 
+var lollipopWithCherry = new lollipop_constr.Lollipop("Cherry");
+var cookieWithDarkChoclate = new cookie_constr.Cookie("Dark choclate", 15); 
+var cookieDoubleOreo = new cookie_constr.Cookie("Double cream", 23, "Double Oreo", 19);
+var marshmellow = new marshmellow_constr.Marshmellow();
+
 prompt.start();
 
+prompt.get(['lollipopWithCherryCount', 'cookieWithDarkChoclateCount', 'cookieDoubleOreoCount', 'marshmellowCount'], function (err, result) {
 
-prompt.get(['lollipopCount', 'marshmellowCount', 'cookieCount'], function (err, result) {
+	for(var i = 0; i < result.lollipopWithCherryCount; i++){
+		giftBox.addGift(lollipopWithCherry);
+	}
 
-	for(var i = 0; i < result.lollipopCount; i++){
-		giftBox.addGift(new lollipop_constr.Lollipop());
+	
+	for(var i = 0; i < result.cookieWithDarkChoclateCount; i++){
+		giftBox.addGift(cookieWithDarkChoclate);
+	}
+
+	for(var i = 0; i < result.cookieDoubleOreoCount; i++){
+		giftBox.addGift(cookieDoubleOreo);
 	}
 
 	for(var i = 0; i < result.marshmellowCount; i++){
-		giftBox.addGift(new marshmellow_constr.Marshmellow());
-	}
-	for(var i = 0; i < result.cookieCount; i++){
-		giftBox.addGift(new cookie_constr.Cookie());
+		giftBox.addGift(marshmellow);
 	}
 
 	console.log('The giftbox consist of:');
-    console.log('lollipops: ' + result.lollipopCount);
-    console.log('marshmellows: ' + result.marshmellowCount);
-    console.log('cookies: ' + result.cookieCount);
+    console.log(lollipopWithCherry.sweetName + ' with ' + lollipopWithCherry.taste + ' : ' + result.lollipopWithCherryCount);
+    console.log(cookieWithDarkChoclate.sweetName + ' with ' + cookieWithDarkChoclate.filling +' : ' + result.cookieWithDarkChoclateCount);
+    console.log(cookieDoubleOreo.sweetName + ' with ' + cookieDoubleOreo.filling +' : ' + result.cookieDoubleOreoCount);
+    console.log(marshmellow.sweetName + ' with ' + marshmellow.filling +' : ' + result.marshmellowCount);
 
     console.log("Total weight: " + giftBox.totalWeight());
+
+    console.log("Sorted sweets in the giftBox by cost: ");
+    giftBox.sortByCost();
 
 });

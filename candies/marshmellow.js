@@ -3,11 +3,10 @@ var inherit = require('../inherit');
 
 inherit.inherit(Marshmellow, sweet.Sweet);
 
-function Marshmellow(){
-	Marshmellow.uber.constructor.apply(this, ["Marshmellow", 1.9, 23]);
+function Marshmellow(sweetName, weight, cost){
+	this.sweetName = sweetName || "Marshmellow";
+	this.weight = weight || 10;
+	this.cost = 1;
 }
-
-
-
 
 exports.Marshmellow = Marshmellow;

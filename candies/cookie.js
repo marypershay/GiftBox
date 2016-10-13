@@ -3,8 +3,11 @@ var inherit = require('../inherit');
 
 inherit.inherit(Cookie, sweet.Sweet);
 
-function Cookie(){
-	Cookie.uber.constructor.apply(this, ["Cookie", 1.2, 23]);
+function Cookie(filling,weight, sweetName, cost){
+	this.filling = filling || "without filling";
+	this.sweetName = sweetName || "Cookie";
+	this.cost = cost || 1.1;
+	this.weight = weight || 10;
 }
 
 
