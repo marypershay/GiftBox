@@ -6,37 +6,31 @@ var lollipop_constr = require('./candies/lollipop');
 var marshmellow_constr = require('./candies/marshmellow');
 
 var giftbox_constr = require('./gift');
-
-
-
-var lollipop = new lollipop_constr.Lollipop();
-
-var marshmellow = new marshmellow_constr.Marshmellow();
-
-var cookie = new cookie_constr.Cookie();
-
-
  
 var giftBox = new giftbox_constr.GiftBox();
-giftBox.addGift(lollipop);
-giftBox.addGift(lollipop);
-giftBox.addGift(lollipop);
-giftBox.addGift(cookie);
-giftBox.addGift(lollipop);
-giftBox.addGift(marshmellow);
-giftBox.showGiftBox();
-console.log(giftBox.totalWeight());
-
 
  
-// prompt.start();
+prompt.start();
 
 
-// prompt.get(['username', 'email'], function (err, result) {
-//     // 
-//     // Log the results. 
-//     // 
-//     console.log('Command-line input received:');
-//     console.log('  username: ' + result.username);
-//     console.log('  email: ' + result.email);
-// });
+prompt.get(['lollipopCount', 'marshmellowCount', 'cookieCount'], function (err, result) {
+
+	for(var i = 0; i < result.lollipopCount; i++){
+		giftBox.addGift(new lollipop_constr.Lollipop());
+	}
+
+	for(var i = 0; i < result.marshmellowCount; i++){
+		giftBox.addGift(new marshmellow_constr.Marshmellow());
+	}
+	for(var i = 0; i < result.cookieCount; i++){
+		giftBox.addGift(new cookie_constr.Cookie());
+	}
+
+	console.log('The giftbox consist of:');
+    console.log('lollipops: ' + result.lollipopCount);
+    console.log('marshmellows: ' + result.marshmellowCount);
+    console.log('cookies: ' + result.cookieCount);
+
+    console.log("Total weight: " + giftBox.totalWeight());
+
+});
