@@ -11,7 +11,7 @@ var giftBox = new giftbox_constr.GiftBox();
 
 var lollipopWithCherry = new lollipop_constr.Lollipop("Cherry");
 var cookieWithDarkChoclate = new cookie_constr.Cookie("Dark choclate", 15); 
-var cookieDoubleOreo = new cookie_constr.Cookie("Double cream", 23, "Double Oreo", 19);
+var cookieDoubleOreo = new cookie_constr.Cookie();
 var marshmellow = new marshmellow_constr.Marshmellow();
 
 prompt.start();
@@ -45,5 +45,9 @@ prompt.get(['lollipopWithCherryCount', 'cookieWithDarkChoclateCount', 'cookieDou
 
     console.log("Sorted sweets in the giftBox by cost: ");
     giftBox.sortByCost();
+
+
+    console.log("Cookies with filling: ");
+    giftBox.showGifts(giftBox.filterCookies());
 
 });
